@@ -4,14 +4,14 @@ LebanonEdu helps students in Lebanon find an exam sample for the subject and ses
 
 ## Try the project
 
-1. Open the project’s `index.html` in a browser with an internet connection.
+1. Download the repository and open `index.html` in a browser with an internet connection.
 2. Enter the portfolio pass `PORTFOLIO-DEMO` and choose English or French.
-3. Select a grade or branch, choose a subject and exam session, then preview an available paper or open it in Google Drive.
+3. Select a grade or branch, choose a subject and exam session, and explore the exam catalogue. The public demo omits the original Google Drive paper links.
 
 ## Front-end work
 
-The site uses HTML, Tailwind CSS and vanilla JavaScript in a single file. JavaScript connects the grade, subject and session menus to a catalogue of document links. Students can also time a practice session with the built-in timer. Google Drive hosts the documents, so availability depends on each file’s sharing settings.
+The site uses HTML, Tailwind CSS and vanilla JavaScript in a single file. JavaScript connects the grade, subject and session menus to a catalogue of document links. Students can also time a practice session with the built-in timer. 
 
-The website source is pending publication. In the prepared portfolio version, the portfolio pass is checked in the browser and gives visitors access to explore the project.
+The portfolio pass is checked in the browser and gives visitors access to explore the project.
 
 Built by [Mohammad Olleik](https://github.com/mhmdolleik-fullstack).
