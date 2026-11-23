@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LebanonEdu - Excellence in Lebanese Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out;
+        }
+
+        .animate-slide-in {
+            animation: slide-in 0.3s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.3s ease-out;
+        }
+
+        .animate-scale-in {
+            animation: scale-in 0.3s ease-out;
+        }
+
+        .animate-shake {
+            animation: shake 0.5s ease;
+        }
+
+        .animation-delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .animation-delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .animation-delay-400 {
+            animation-delay: 400ms;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8,0,1,1);
+            }
+            50% {
+                transform: none;
+                animation-timing-function: cubic-bezier(0,0,0.2,1);
+            }
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .grayscale {
+            filter: grayscale(100%);
+        }
+
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+        }
+
+        .backdrop-blur-lg {
+            backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div class="absolute top-40 left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+    </div>
+
+    <!-- Authentication Screen -->
+    <div id="authScreen" class="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 flex items-center justify-center p-4">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+            <div class="absolute top-40 left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000"></div>
+        </div>
+        
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative z-10">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4 animate-bounce">🇱🇧</div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    Welcome to LebanonEdu
+                </h1>
+                <p class="text-gray-600 mt-2">Enter your license key to access premium Lebanese educational content</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">License Key</label>
+                    <input
+                        type="text"
+                        id="licenseInput"
+                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-center text-lg font-mono tracking-wider uppercase transition-colors focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-100"
+                    />
+                    <p id="authError" class="text-red-500 text-sm mt-2 hidden animate-shake"></p>
+                </div>
+
+                <button
+                    id="loginBtn"
+                    class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                    Access Platform
+                </button>
+            </div>
+
+            <div class="mt-8 p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-purple-200">
+                <h4 class="text-purple-700 font-semibold mb-3 flex items-center">
+                    <span class="text-2xl mr-2">🔑</span>
+                    How to Get a License
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                    LebanonEdu provides comprehensive access to Lebanese curriculum materials, past exams, and AI-powered tutoring.
+                </p>
+                
+                <div class="space-y-2 mb-4">
+                    <p class="font-semibold text-gray-800">Available License Types:</p>
+                    <ul class="space-y-1 text-sm text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-purple-500 mr-2">•</span>
+                            <span><strong>Premium Annual</strong> - Full access to all courses and features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-500 mr-2">•</span>
+                            <span><strong>Student Basic</strong> - Access to selected courses</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-500 mr-2">•</span>
+                            <span><strong>Trial License</strong> - 30-day evaluation period</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="text-sm text-gray-700 space-y-1">
+                    <p class="font-semibold">Portfolio pass: PORTFOLIO-DEMO</p>
+
+
+
+                </div>
+                
+                <div class="mt-4 p-3 bg-purple-100 rounded-lg">
+                    <p class="text-xs text-purple-700">
+                        <strong>Demo Access:</strong> Try "PORTFOLIO-DEMO" for limited preview
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Screen -->
+    <div id="languageSelectionScreen" class="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+            <div class="absolute top-40 left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000"></div>
+        </div>
+        
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 relative z-10">
+            <div class="text-center mb-8">
+                <div class="text-6xl mb-4 animate-bounce">🌍</div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent mb-2">
+                    Lebanese Language Selection
+                </h1>
+                <p class="text-gray-600">Welcome to our website! Please select your preferred language from the options below:</p>
+            </div>
+
+            <div class="space-y-4">
+                <button
+                    id="selectEnglish"
+                    class="w-full p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-3"
+                >
+                    <span class="text-3xl">🇬🇧</span>
+                    <span>English</span>
+                </button>
+
+                <button
+                    id="selectFrench"
+                    class="w-full p-6 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-2xl font-semibold text-lg hover:from-red-600 hover:to-red-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-3"
+                >
+                    <span class="text-3xl">🇫🇷</span>
+                    <span>Français</span>
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-500">You can change your language preference anytime in settings</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <!-- Header -->
+        <header class="bg-white/95 backdrop-blur-lg shadow-lg sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-3xl">🇱🇧</span>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                            LebanonEdu
+                        </span>
+                    </div>
+                    
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition-colors" data-translate="nav.home">Home</a>
+                        <a href="#courses" class="text-gray-700 hover:text-purple-600 font-medium transition-colors" data-translate="nav.courses">Courses</a>
+                        <a href="#features" class="text-gray-700 hover:text-purple-600 font-medium transition-colors" data-translate="nav.features">Features</a>
+                        <a href="#progress" class="text-gray-700 hover:text-purple-600 font-medium transition-colors" data-translate="nav.progress">Progress</a>
+                        <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium transition-colors" data-translate="nav.contact">Contact</a>
+                    </nav>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button
+                            id="languageToggle"
+                            class="px-3 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all"
+                        >
+                            🌐 EN/FR
+                        </button>
+                        
+                        <button
+                            id="profileBtn"
+                            class="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white font-bold hover:scale-110 transition-transform"
+                        >
+                            U
+                        </button>
+                        
+                        <button
+                            id="mobileMenuBtn"
+                            class="md:hidden text-gray-700"
+                        >
+                            ☰
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden bg-white border-t hidden">
+                <div class="px-4 py-4 space-y-3">
+                    <a href="#home" class="block text-gray-700 hover:text-purple-600 font-medium" data-translate="nav.home">Home</a>
+                    <a href="#courses" class="block text-gray-700 hover:text-purple-600 font-medium" data-translate="nav.courses">Courses</a>
+                    <a href="#features" class="block text-gray-700 hover:text-purple-600 font-medium" data-translate="nav.features">Features</a>
+                    <a href="#progress" class="block text-gray-700 hover:text-purple-600 font-medium" data-translate="nav.progress">Progress</a>
+                    <a href="#contact" class="block text-gray-700 hover:text-purple-600 font-medium" data-translate="nav.contact">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative py-20 text-center text-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up" data-translate="hero.title">
+                    Excellence in Lebanese Education
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-up animation-delay-200" data-translate="hero.description">
+                    Master the Lebanese curriculum with our comprehensive courses, expert instructors, and AI-powered learning assistant. Available in Arabic, French, and English.
+                </p>
+                <a 
+                    href="#courses" 
+                    class="inline-block bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transform transition-all duration-200 shadow-lg hover:shadow-xl animate-fade-in-up animation-delay-400"
+                    data-translate="hero.cta"
+                >
+                    Start Your Learning Journey
+                </a>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800" data-translate="courses.title">
+                        Our Premium Courses
+                    </h2>
+                    
+                    <div id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Courses will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-translate="features.title">
+                    Why Choose LebanonEdu?
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">👨‍🏫</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.expertTeachers">Expert Lebanese Teachers</h3>
+                        <p class="opacity-90" data-translate="features.expertTeachersDesc">Learn from certified instructors who understand the Lebanese educational system and official exam requirements.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.aiAssistant">AI Study Assistant</h3>
+                        <p class="opacity-90" data-translate="features.aiAssistantDesc">24/7 intelligent tutoring system that helps with homework, explanations, and exam preparation in multiple languages.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">📱</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.learnAnywhere">Learn Anywhere</h3>
+                        <p class="opacity-90" data-translate="features.learnAnywhereDesc">Access your courses on any device with offline support and synchronized progress across all platforms.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">🏆</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.provenSuccess">Proven Success</h3>
+                        <p class="opacity-90" data-translate="features.provenSuccessDesc">Join thousands of students achieving top scores in Lebanese Baccalaureate and university entrance exams.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.progressTracking">Progress Tracking</h3>
+                        <p class="opacity-90" data-translate="features.progressTrackingDesc">Monitor your learning journey with detailed analytics, achievements, and personalized study recommendations.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                        <div class="text-4xl mb-4">🌍</div>
+                        <h3 class="text-xl font-bold mb-2" data-translate="features.multilingualSupport">Multilingual Support</h3>
+                        <p class="opacity-90" data-translate="features.multilingualSupportDesc">Study in Arabic, French, or English with seamless language switching and culturally relevant content.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="bg-gray-900 text-white py-12 mt-16">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <p class="mb-2">&copy; 2025 LebanonEdu - Empowering Lebanese Students for Global Success</p>
+
+                <div class="flex justify-center space-x-4 text-2xl">
+                    <a href="#" class="hover:text-blue-400 transition-colors">📘</a>
+                    <a href="#" class="hover:text-pink-400 transition-colors">📷</a>
+                    <a href="#" class="hover:text-red-400 transition-colors">📺</a>
+                    <a href="#" class="hover:text-blue-500 transition-colors">💼</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- User Profile Panel -->
+    <div id="profilePanel" class="fixed top-20 right-4 bg-white rounded-2xl shadow-2xl p-6 z-50 w-80 animate-slide-in hidden">
+        <div class="flex items-center space-x-4 mb-6 pb-6 border-b">
+            <div class="w-14 h-14 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                U
+            </div>
+            <div>
+                <h4 id="userName" class="font-bold text-gray-800">Demo User</h4>
+                <div class="flex items-center space-x-2 text-sm text-gray-600">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span>Active Student</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+                <span class="text-gray-600">📧 Email:</span>
+                <span id="userEmail" class="text-gray-800">Portfolio visitor</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">🔑 License:</span>
+                <span id="userLicense" class="text-gray-800 font-mono text-xs">PORTFOLIO-DEMO</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">📚 Access Level:</span>
+                <span id="userAccess" class="text-gray-800">Demo License</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">⏱️ Study Time:</span>
+                <span id="studyTime" class="text-gray-800">00:00:00</span>
+            </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t">
+            <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-600">Overall Progress</span>
+                    <span class="text-purple-600 font-semibold">25%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-700 h-2 rounded-full" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2 mb-6">
+                <div class="text-center p-2 bg-purple-50 rounded-lg">
+                    <div class="text-2xl mb-1">🌟</div>
+                    <div class="text-xs text-gray-600">First Steps</div>
+                </div>
+                <div class="text-center p-2 bg-gray-100 rounded-lg opacity-50">
+                    <div class="text-2xl mb-1 grayscale">🔥</div>
+                    <div class="text-xs text-gray-400">Week Streak</div>
+                </div>
+                <div class="text-center p-2 bg-gray-100 rounded-lg opacity-50">
+                    <div class="text-2xl mb-1 grayscale">🎓</div>
+                    <div class="text-xs text-gray-400">Course Hero</div>
+                </div>
+                <div class="text-center p-2 bg-gray-100 rounded-lg opacity-50">
+                    <div class="text-2xl mb-1 grayscale">📚</div>
+                    <div class="text-xs text-gray-400">Study Master</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex space-x-2">
+            <button
+                id="closeProfileBtn"
+                class="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white py-2 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all"
+            >
+                Close Profile
+            </button>
+            <button
+                id="logoutBtn"
+                class="flex-1 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all"
+            >
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Subject Selection Modal -->
+    <div id="subjectModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden animate-scale-in">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 id="subjectModalTitle" class="text-2xl font-bold text-gray-800">Grade 9 - Foundation Year</h3>
+                <button id="closeSubjectModal" class="text-gray-500 hover:text-gray-700">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto max-h-[60vh]">
+                <div id="subjectsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Subjects will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Selection Modal -->
+    <div id="sessionModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden animate-scale-in">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 id="sessionModalTitle" class="text-2xl font-bold text-gray-800">Mathematics - Grade 9</h3>
+                <button id="closeSessionModal" class="text-gray-500 hover:text-gray-700">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="p-6">
+                <button id="backToSubjects" class="mb-4 flex items-center space-x-2 text-gray-600 hover:text-gray-800">
+                    <span>←</span>
+                    <span data-translate="modal.backToSubjects">Back to Subjects</span>
+                </button>
+                
+                <div id="sessionsGrid" class="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-[50vh] overflow-y-auto">
+                    <!-- Sessions will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Modal -->
+    <div id="contentModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden animate-scale-in">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 id="contentModalTitle" class="text-2xl font-bold text-gray-800">Mathematics - 2022 (Session 1)</h3>
+                <button id="closeContentModal" class="text-gray-500 hover:text-gray-700">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="p-6 h-[calc(100%-80px)] overflow-hidden">
+                <div class="text-center mb-6">
+                    <h4 id="contentHeader" class="text-purple-600 text-xl mb-4">📚 Grade 9 - Mathematics</h4>
+                    <p id="contentSession" class="text-gray-600 mb-6">Session: 2022 (Session 1)</p>
+                    
+                    <div class="flex justify-center gap-4 mb-6">
+                        <a
+                            id="openInDrive"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all"
+                        >
+                            <span>🔗</span>
+                            <span data-translate="content.openInDrive">Open in Google Drive</span>
+                        </a>
+                        <button
+                            id="previewBtn"
+                            class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all"
+                        >
+                            <span>👁️</span>
+                            <span data-translate="content.previewHere">Preview Here</span>
+                        </button>
+                    </div>
+                    
+                    <div class="w-full h-[500px] bg-gray-100 rounded-lg overflow-hidden">
+                        <iframe
+                            id="contentFrame"
+                            class="w-full h-full border-0"
+                            allow="autoplay"
+                            title="Content Preview"
+                        ></iframe>
+                        <div id="previewPlaceholder" class="flex items-center justify-center h-full text-gray-500">
+                            <p data-translate="content.previewPlaceholder">Click "Preview Here" to view the document or use "Open in Google Drive"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="fixed bottom-8 right-8 z-40">
+        <div id="chatbot" class="bg-white rounded-2xl shadow-2xl w-96 h-[600px] mb-4 flex flex-col animate-slide-up hidden">
+            <div class="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-4 rounded-t-2xl">
+                <h4 class="font-bold text-lg" data-translate="chat.title">LebanonEdu AI Assistant</h4>
+                <p class="text-sm opacity-90" data-translate="chat.subtitle">Your 24/7 Study Companion</p>
+            </div>
+            
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto bg-gray-50">
+                <div class="space-y-3">
+                    <div class="max-w-[85%] p-3 rounded-2xl bg-white text-gray-800 self-start">
+                        <p id="welcomeMessage" class="whitespace-pre-wrap" data-translate="chat.welcomeMessage">مرحباً! Hello! Bonjour! 👋
+
+I'm your AI study assistant, here to help you excel in your Lebanese education. I can assist with:
+
+📚 Subject explanations in Arabic, French, or English
+📝 Homework help and problem solving
+🎯 Exam preparation strategies
+🔬 Step-by-step solutions for math & science
+📖 Essay writing and language support
+💡 Study tips and memory techniques
+
+How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t bg-white rounded-b-2xl">
+                <div class="flex space-x-2">
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Type your question..."
+                        data-translate-placeholder="chat.inputPlaceholder"
+                        class="flex-1 px-4 py-2 border-2 border-gray-200 rounded-full focus:outline-none focus:border-purple-500 transition-colors"
+                    />
+                    <button
+                        id="sendChatBtn"
+                        class="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-purple-800 transition-all"
+                    >
+                        ➤
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button
+            id="chatToggleBtn"
+            class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full text-white shadow-lg hover:scale-110 transition-transform flex items-center justify-center text-2xl"
+        >
+            🤖
+        </button>
+    </div>
+
+    <!-- Study Timer -->
+    <div id="studyTimer" class="fixed bottom-8 left-8 bg-white rounded-2xl shadow-2xl p-6 z-40 animate-slide-in hidden">
+        <h4 class="font-bold text-gray-800 mb-4" data-translate="timer.title">Study Session</h4>
+        <div id="timerDisplay" class="text-3xl font-mono text-gray-800 mb-4">
+            00:00:00
+        </div>
+        <div class="flex space-x-2">
+            <button
+                id="startTimerBtn"
+                class="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all"
+                data-translate="timer.start"
+            >
+                ▶ Start
+            </button>
+            <button
+                id="pauseTimerBtn"
+                class="px-4 py-2 bg-amber-500 text-white rounded-lg font-semibold hover:bg-amber-600 transition-all"
+                data-translate="timer.pause"
+            >
+                ⏸ Pause
+            </button>
+            <button
+                id="stopTimerBtn"
+                class="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all"
+                data-translate="timer.stop"
+            >
+                ⏹ Stop
+            </button>
+        </div>
+    </div>
+
+    <!-- Timer Toggle Button -->
+    <button
+        id="timerToggleBtn"
+        class="fixed bottom-8 left-8 w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full text-white shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+    >
+        🕐
+    </button>
+
+    <!-- Notifications -->
+    <div id="notification" class="fixed top-24 right-4 bg-white rounded-xl shadow-2xl p-4 z-50 animate-slide-in max-w-sm border-l-4 border-blue-500 hidden">
+        <div class="flex items-start space-x-3">
+            <div id="notificationIcon" class="text-2xl">ℹ️</div>
+            <div>
+                <h4 id="notificationTitle" class="font-semibold text-gray-800">Notification</h4>
+                <p id="notificationMessage" class="text-sm text-gray-600">Message</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentUser = null;
+        let isAuthenticated = false;
+        let selectedLanguage = 'english'; // Default language
+        let selectedBranch = '';
+        let selectedSubject = null;
+        let selectedSession = '';
+        let timerSeconds = 0;
+        let isTimerRunning = false;
+        let timerInterval = null;
+        let chatMessages = [];
+
+        // Configuration with comprehensive course content
+        const config = {
+            validLicenseKeys: {
+                'PORTFOLIO-DEMO': { name: 'Portfolio demo', access: 'Exam library', courses: ['grade9', 'se', 'gs', 'ls', 'lh'], duration: 'Demo', features: [], userName: 'Portfolio Visitor' }
+            },
+            translations: {
+                english: {
+                    nav: {
+                        home: 'Home',
+                        courses: 'Courses',
+                        features: 'Features', 
+                        progress: 'Progress',
+                        contact: 'Contact'
+                    },
+                    hero: {
+                        title: 'Excellence in Lebanese Education',
+                        description: 'Master the Lebanese curriculum with our comprehensive courses, expert instructors, and AI-powered learning assistant. Available in Arabic, French, and English.',
+                        cta: 'Start Your Learning Journey'
+                    },
+                    courses: {
+                        title: 'Our Premium Courses',
+                        grade9: {
+                            title: '📚 Grade 9 Complete',
+                            description: 'Master all Grade 9 subjects including Mathematics, Sciences, Languages, and Social Studies with comprehensive Lebanese curriculum coverage.'
+                        },
+                        se: {
+                            title: '💼 SE Branch',
+                            description: 'Economics & Sociology specialization with advanced courses in business, social sciences, and all core subjects for university preparation.'
+                        },
+                        gs: {
+                            title: '🔬 GS Branch',
+                            description: 'General Sciences track focusing on advanced mathematics, physics, and chemistry for engineering and scientific career paths.'
+                        },
+                        ls: {
+                            title: '🧬 LS Branch',
+                            description: 'Life Sciences specialization with in-depth biology, chemistry, and health sciences for medical and research careers.'
+                        },
+                        lh: {
+                            title: '📖 LH Branch',
+                            description: 'Literature & Humanities focus with philosophy, advanced languages, and cultural studies for arts and humanities paths.'
+                        }
+                    },
+                    features: {
+                        title: 'Why Choose LebanonEdu?',
+                        expertTeachers: 'Expert Lebanese Teachers',
+                        expertTeachersDesc: 'Learn from certified instructors who understand the Lebanese educational system and official exam requirements.',
+                        aiAssistant: 'AI Study Assistant',
+                        aiAssistantDesc: '24/7 intelligent tutoring system that helps with homework, explanations, and exam preparation in multiple languages.',
+                        learnAnywhere: 'Learn Anywhere',
+                        learnAnywhereDesc: 'Access your courses on any device with offline support and synchronized progress across all platforms.',
+                        provenSuccess: 'Proven Success',
+                        provenSuccessDesc: 'Join thousands of students achieving top scores in Lebanese Baccalaureate and university entrance exams.',
+                        progressTracking: 'Progress Tracking',
+                        progressTrackingDesc: 'Monitor your learning journey with detailed analytics, achievements, and personalized study recommendations.',
+                        multilingualSupport: 'Multilingual Support',
+                        multilingualSupportDesc: 'Study in Arabic, French, or English with seamless language switching and culturally relevant content.'
+                    },
+                    modal: {
+                        backToSubjects: 'Back to Subjects'
+                    },
+                    content: {
+                        openInDrive: 'Open in Google Drive',
+                        previewHere: 'Preview Here',
+                        previewPlaceholder: 'Click "Preview Here" to view the document or use "Open in Google Drive"'
+                    },
+                    chat: {
+                        title: 'LebanonEdu AI Assistant',
+                        subtitle: 'Your 24/7 Study Companion',
+                        inputPlaceholder: 'Type your question...',
+                        welcomeMessage: 'مرحباً! Hello! Bonjour! 👋\n\nI\'m your AI study assistant, here to help you excel in your Lebanese education. I can assist with:\n\n📚 Subject explanations in Arabic, French, or English\n📝 Homework help and problem solving\n🎯 Exam preparation strategies\n🔬 Step-by-step solutions for math & science\n📖 Essay writing and language support\n💡 Study tips and memory techniques\n\nHow can I help you today?'
+                    },
+                    timer: {
+                        title: 'Study Session',
+                        start: '▶ Start',
+                        pause: '⏸ Pause',
+                        stop: '⏹ Stop'
+                    }
+                },
+                french: {
+                    nav: {
+                        home: 'Accueil',
+                        courses: 'Cours',
+                        features: 'Fonctionnalités',
+                        progress: 'Progrès',
+                        contact: 'Contact'
+                    },
+                    hero: {
+                        title: 'Excellence dans l\'Éducation Libanaise',
+                        description: 'Maîtrisez le programme libanais avec nos cours complets, nos instructeurs experts et notre assistant d\'apprentissage alimenté par l\'IA. Disponible en arabe, français et anglais.',
+                        cta: 'Commencer Votre Parcours d\'Apprentissage'
+                    },
+                    courses: {
+                        title: 'Nos Cours Premium',
+                        grade9: {
+                            title: '📚 Classe de 3ème Complète',
+                            description: 'Maîtrisez toutes les matières de 3ème incluant les mathématiques, les sciences, les langues et les études sociales avec une couverture complète du programme libanais.'
+                        },
+                        se: {
+                            title: '💼 Branche SE',
+                            description: 'Spécialisation en Économie et Sociologie avec des cours avancés en commerce, sciences sociales et toutes les matières principales pour la préparation universitaire.'
+                        },
+                        gs: {
+                            title: '🔬 Branche GS',
+                            description: 'Filière Sciences Générales axée sur les mathématiques avancées, la physique et la chimie pour les carrières d\'ingénierie et scientifiques.'
+                        },
+                        ls: {
+                            title: '🧬 Branche LS',
+                            description: 'Spécialisation Sciences de la Vie avec biologie approfondie, chimie et sciences de la santé pour les carrières médicales et de recherche.'
+                        },
+                        lh: {
+                            title: '📖 Branche LH',
+                            description: 'Concentration Littérature et Sciences Humaines avec philosophie, langues avancées et études culturelles pour les parcours artistiques et humanitaires.'
+                        }
+                    },
+                    features: {
+                        title: 'Pourquoi Choisir LebanonEdu?',
+                        expertTeachers: 'Professeurs Libanais Experts',
+                        expertTeachersDesc: 'Apprenez avec des instructeurs certifiés qui comprennent le système éducatif libanais et les exigences des examens officiels.',
+                        aiAssistant: 'Assistant d\'Étude IA',
+                        aiAssistantDesc: 'Système de tutorat intelligent 24h/24 qui aide avec les devoirs, les explications et la préparation aux examens en plusieurs langues.',
+                        learnAnywhere: 'Apprenez Partout',
+                        learnAnywhereDesc: 'Accédez à vos cours sur n\'importe quel appareil avec support hors ligne et progression synchronisée sur toutes les plateformes.',
+                        provenSuccess: 'Succès Prouvé',
+                        provenSuccessDesc: 'Rejoignez des milliers d\'étudiants obtenant les meilleures notes au Baccalauréat libanais et aux examens d\'entrée universitaires.',
+                        progressTracking: 'Suivi des Progrès',
+                        progressTrackingDesc: 'Surveillez votre parcours d\'apprentissage avec des analyses détaillées, des réalisations et des recommandations d\'étude personnalisées.',
+                        multilingualSupport: 'Support Multilingue',
+                        multilingualSupportDesc: 'Étudiez en arabe, français ou anglais avec un changement de langue transparent et un contenu culturellement pertinent.'
+                    },
+                    modal: {
+                        backToSubjects: 'Retour aux Matières'
+                    },
+                    content: {
+                        openInDrive: 'Ouvrir dans Google Drive',
+                        previewHere: 'Prévisualiser Ici',
+                        previewPlaceholder: 'Cliquez sur "Prévisualiser Ici" pour voir le document ou utilisez "Ouvrir dans Google Drive"'
+                    },
+                    chat: {
+                        title: 'Assistant IA LebanonEdu',
+                        subtitle: 'Votre Compagnon d\'Étude 24h/24',
+                        inputPlaceholder: 'Tapez votre question...',
+                        welcomeMessage: 'مرحباً! Hello! Bonjour! 👋\n\nJe suis votre assistant d\'étude IA, ici pour vous aider à exceller dans votre éducation libanaise. Je peux vous aider avec:\n\n📚 Explications de matières en arabe, français ou anglais\n📝 Aide aux devoirs et résolution de problèmes\n🎯 Stratégies de préparation aux examens\n🔬 Solutions étape par étape pour les maths et sciences\n📖 Rédaction d\'essais et support linguistique\n💡 Conseils d\'étude et techniques de mémorisation\n\nComment puis-je vous aider aujourd\'hui?'
+                    },
+                    timer: {
+                        title: 'Session d\'Étude',
+                        start: '▶ Démarrer',
+                        pause: '⏸ Pause',
+                        stop: '⏹ Arrêter'
+                    }
+                }
+            },
+            subjectData: {
+                grade9: {
+                    title: {
+                        english: "Grade 9 - Foundation Year",
+                        french: "Classe de 3ème - Année de Base"
+                    },
+                    subjects: [
+                        { 
+                            name: { english: "Mathematics", french: "Mathématiques" }, 
+                            icon: "🔢", 
+                            color: "#667eea",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Physics", french: "Physique" }, 
+                            icon: "⚡", 
+                            color: "#ff6b6b",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Chemistry", french: "Chimie" }, 
+                            icon: "🧪", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Biology", french: "Biologie" }, 
+                            icon: "🧬", 
+                            color: "#2ed573",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "English", french: "Anglais" }, 
+                            icon: "🇬🇧", 
+                            color: "#5f27cd",
+                            language: "english"
+                        },
+                        { 
+                            name: { english: "Arabic", french: "Arabe" }, 
+                            icon: "🇱🇧", 
+                            color: "#ee5a24",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "French", french: "Français" }, 
+                            icon: "🇫🇷", 
+                            color: "#0984e3",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "History", french: "Histoire" }, 
+                            icon: "📜", 
+                            color: "#fdcb6e",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Géographie" }, 
+                            icon: "🌍", 
+                            color: "#00b894",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Civic Education", french: "Éducation Civique" }, 
+                            icon: "🏛️", 
+                            color: "#e17055",
+                            language: "both"
+                        }
+                    ]
+                },
+                se: {
+                    title: {
+                        english: "SE - Economics & Sociology",
+                        french: "SE - Économie et Sociologie"
+                    },
+                    subjects: [
+                        { 
+                            name: { english: "Economics", french: "Économie" }, 
+                            icon: "💰", 
+                            color: "#667eea",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Sociology", french: "Sociologie" }, 
+                            icon: "👥", 
+                            color: "#ff6b6b",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Mathematics", french: "Mathématiques" }, 
+                            icon: "🔢", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Physics", french: "physique" }, 
+                            icon: "⚡", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Chemistry", french: "chimie" }, 
+                            icon: "🧪", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Civics", french: "Civics" }, 
+                            icon: "🏛️", 
+                            color: "#2ed573",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "English", french: "Anglais" }, 
+                            icon: "🇬🇧", 
+                            color: "#5f27cd",
+                            language: "english"
+                        },
+                        { 
+                            name: { english: "Arabic", french: "Arabe" }, 
+                            icon: "🇱🇧", 
+                            color: "#ee5a24",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "French", french: "Français" }, 
+                            icon: "🇫🇷", 
+                            color: "#0984e3",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "History", french: "Histoire" }, 
+                            icon: "📜", 
+                            color: "#fdcb6e",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Géographie" }, 
+                            icon: "🌍", 
+                            color: "#00b894",
+                            language: "both"
+                        }
+                    ]
+                },
+                gs: {
+                    title: {
+                        english: "GS - General Sciences",
+                        french: "GS - Sciences Générales"
+                    },
+                    subjects: [
+                        { 
+                            name: { english: "Mathematics", french: "Mathématiques" }, 
+                            icon: "🔢", 
+                            color: "#667eea",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Physics", french: "Physique" }, 
+                            icon: "⚡", 
+                            color: "#ff6b6b",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Chemistry", french: "Chimie" }, 
+                            icon: "🧪", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Mathématiques Avancées" }, 
+                            icon: "🌍", 
+                            color: "#2ed573",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Civics", french: "instruction civique" }, 
+                            icon: "🏛️", 
+                            color: "#5f27cd",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "English", french: "Anglais" }, 
+                            icon: "🇬🇧", 
+                            color: "#ee5a24",
+                            language: "english"
+                        },
+                        { 
+                            name: { english: "Arabic", french: "Arabe" }, 
+                            icon: "🇱🇧", 
+                            color: "#0984e3",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "French", french: "Français" }, 
+                            icon: "🇫🇷", 
+                            color: "#fdcb6e",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Géographie" }, 
+                            icon: "🌍", 
+                            color: "#fdcb6e",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "History", french: "Histoire" }, 
+                            icon: "📜", 
+                            color: "#00b894",
+                            language: "both"
+                        }
+                    ]
+                },
+                ls: {
+                    title: {
+                        english: "LS - Life Sciences",
+                        french: "LS - Sciences de la Vie"
+                    },
+                    subjects: [
+                        { 
+                            name: { english: "Biology", french: "Biologie" }, 
+                            icon: "🧬", 
+                            color: "#667eea",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Chemistry", french: "Chimie" }, 
+                            icon: "🧪", 
+                            color: "#ff6b6b",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Physics", french: "Physique" }, 
+                            icon: "⚡", 
+                            color: "#4ecdc4",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Mathematics", french: "Mathématiques" }, 
+                            icon: "🔢", 
+                            color: "#2ed573",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Géographie" }, 
+                            icon: "🌍", 
+                            color: "#5f27cd",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Civics", french: "Instruction civique" }, 
+                            icon: "🏛️", 
+                            color: "#ee5a24",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "English", french: "Anglais" }, 
+                            icon: "🇬🇧", 
+                            color: "#0984e3",
+                            language: "english"
+                        },
+                        { 
+                            name: { english: "Arabic", french: "Arabe" }, 
+                            icon: "🇱🇧", 
+                            color: "#fdcb6e",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "French", french: "Français" }, 
+                            icon: "🇫🇷", 
+                            color: "#00b894",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "History", french: "Histoire" }, 
+                            icon: "📜", 
+                            color: "#e17055",
+                            language: "both"
+                        }
+                    ]
+                },
+                lh: {
+                    title: {
+                        english: "LH - Literature & Humanities",
+                        french: "LH - Littérature et Sciences Humaines"
+                    },
+                    subjects: [
+                        { 
+                            name: { english: "Philosophy", french: "Philosophie" }, 
+                            icon: "🤔", 
+                            color: "#667eea",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Arabic Philosophy", french: "Philosophie Arabe" }, 
+                            icon: "📚", 
+                            color: "#ff6b6b",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "English Literature", french: "Littérature Anglaise" }, 
+                            icon: "🇬🇧", 
+                            color: "#4ecdc4",
+                            language: "english"
+                        },
+                        { 
+                            name: { english: "Arabic Literature", french: "Littérature Arabe" }, 
+                            icon: "🇱🇧", 
+                            color: "#2ed573",
+                            language: "arabic"
+                        },
+                        { 
+                            name: { english: "French Literature", french: "Littérature Française" }, 
+                            icon: "🇫🇷", 
+                            color: "#5f27cd",
+                            language: "french"
+                        },
+                        { 
+                            name: { english: "History", french: "Histoire" }, 
+                            icon: "📜", 
+                            color: "#ee5a24",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Geography", french: "Géographie" }, 
+                            icon: "🌍", 
+                            color: "#0984e3",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Mathematics", french: "Mathématiques" }, 
+                            icon: "🔢", 
+                            color: "#fdcb6e",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Chemistry", french: "Chimie" }, 
+                            icon: "🧪", 
+                            color: "#00b894",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Biology", french: "Biologie" }, 
+                            icon: "🧬", 
+                            color: "#00b894",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Civics", french: "Instruction civique" }, 
+                            icon: "🏛️", 
+                            color: "#00b894",
+                            language: "both"
+                        },
+                        { 
+                            name: { english: "Physics", french: "Physique" }, 
+                            icon: "⚡", 
+                            color: "#e17055",
+                            language: "both"
+                        }
+                    ]
+                }
+            },
+            // Comprehensive course content with different language versions
+            courseContent: {
+                grade9: {
+                    "Mathematics": {
+                         english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2022 (Session 1)": "",
+                            "2022 (Session 2)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": "",
+                            "2024 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2023 (Session 2)": ""
+                        }
+                    },
+                    "Civics": {
+                        english: {
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "", 
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "", 
+                        "2013 (Session 2)": "", 
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "", 
+                        "2016 (Session 1)": "", 
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "", 
+                        "2018 (Session 1)": "", 
+                        "2018 (Session 2)": "", 
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "", 
+                        "2021 (Session 1)": "", 
+                        "2022 (Session 1)": "", 
+                        "2022 (Session 2)": ""
+                        },
+                        french: {
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "", 
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "", 
+                        "2013 (Session 2)": "", 
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "", 
+                        "2016 (Session 1)": "", 
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "", 
+                        "2018 (Session 1)": "", 
+                        "2018 (Session 2)": "", 
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "", 
+                        "2021 (Session 1)": "", 
+                        "2022 (Session 1)": "", 
+                        "2022 (Session 2)": ""
+                        }
+                    },
+                    "Physics": {
+                        english: {
+                           "2012 (Session 1)": "",
+                           "2012 (Session 2)": "",
+                           "2013 (Session 1)": "",
+                           "2013 (Session 2)": "",
+                           "2015 (Session 1)": "",
+                           "2016 (Session 1)": "",
+                           "2016 (Session 2)": "",
+                           "2017 (Session 1)": "",
+                           "2017 (Session 2)": "",
+                           "2021 (Session 1)": "",
+                           "2022 (Session 1)": "",
+                           "2022 (Session 2)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": "",
+                            "2024 (Session 2)": ""
+                        }
+                    },
+                    "Chemistry": {
+                        english: {
+                           "2011 (Session 1)": "",
+                           "2011 (Session 2)": "",
+                           "2012 (Session 1)": "",
+                           "2012 (Session 2)": "",
+                           "2013 (Session 1)": "",
+                           "2013 (Session 2)": "",
+                           "2015 (Session 1)": "",
+                           "2015 (Session 2)": "",
+                           "2016 (Session 1)": "",
+                           "2016 (Session 2)": "",
+                           "2017 (Session 1)": "",
+                           "2017 (Session 2)": "",
+                           "2018 (Session 1)": "",
+                           "2018 (Session 2)": "",
+                           "2019 (Session 1)": "",
+                           "2019 (Session 2)": "",
+                           "2021 (Session 1)": "",
+                           "2022 (Session 1)": "",
+                           "2022 (Session 2)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Biology": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2021 (Session 1)": "",
+                            "2022 (Session 1)": "",
+                            "2022 (Session 2)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": "",
+                            "2023 (Session 1)": ""
+                        }
+                    },
+                    "English": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        }
+                    },
+                    "French": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        }
+                    },
+                    "Arabic": {
+                        arabic: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        }
+                    },
+                    "History": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2012 (Session 1)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 1)": "",
+                        "2017 (Session 1)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Sessein 1)": "",
+                        "2022 (Session 1)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2012 (Session 1)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 1)": "",
+                        "2017 (Session 1)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Sessein 1)": "",
+                        "2022 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": ""
+                        }
+                    }
+                },
+                se: {
+                    "Economics": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 2)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 2)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Sociology": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "English": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Biology": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Civics": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2017 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2017 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Arabic": {
+                        english: {
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                    },
+                        french: {
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Physics": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 1)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Chemistry": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "History": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 1)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2016 (Session 1)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "French": {
+                        english: {
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Mathematics": {
+                        english: {
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    }
+                },
+                gs: {
+                    "Mathematics": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Physics": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2022 (Session 1)": "",
+                        "2022 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Chemistry": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Civics": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": ""
+                        }
+                    },
+                    "History": {
+                        english: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        },
+                        french: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "English": {
+                        english: {
+                       "2011 (Session 1)": "",
+                       "2011 (Session 2)": "",
+                       "2012 (Session 1)": "",
+                       "2012 (Session 2)": "",
+                       "2013 (Session 1)": "",
+                       "2013 (Session 2)": "",
+                       "2015 (Session 1)": "",
+                       "2015 (Session 2)": "",
+                       "2016 (Session 1)": "",
+                       "2016 (Session 2)": "",
+                       "2017 (Session 1)": "",
+                       "2017 (Session 2)": "",
+                       "2018 (Session 1)": "",
+                       "2018 (Session 2)": "",
+                       "2019 (Session 1)": "",
+                       "2019 (Session 2)": "",
+                       "2021 (Session 1)": "",
+                       "2021 (Session 2)": "",
+                       "2024 (Session 1)": ""
+                        }
+                    },
+                    "French": {
+                        french: {
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2024 (Session 1)": ""  
+                        }
+                    },
+                    "Arabic": {
+                        arabic: {
+                        "2011 (Session 1)": "",
+                        "2011 (Session 2)": "",
+                        "2012 (Session 1)": "",
+                        "2012 (Session 2)": "",
+                        "2013 (Session 1)": "",
+                        "2013 (Session 2)": "",
+                        "2015 (Session 1)": "",
+                        "2015 (Session 2)": "",
+                        "2016 (Session 1)": "",
+                        "2016 (Session 2)": "",
+                        "2017 (Session 1)": "",
+                        "2017 (Session 2)": "",
+                        "2018 (Session 1)": "",
+                        "2018 (Session 2)": "",
+                        "2019 (Session 1)": "",
+                        "2019 (Session 2)": "",
+                        "2021 (Session 1)": "",
+                        "2021 (Session 2)": "",
+                        "2024 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                        "2011 (Session 1)": "",
+                       "2011 (Session 2)": "",
+                       "2012 (Session 1)": "",
+                       "2012 (Session 2)": "",
+                       "2013 (Session 1)": "",
+                       "2013 (Session 2)": "",
+                       "2015 (Session 1)": "",
+                       "2016 (Session 1)": "",
+                       "2016 (Session 2)": "",
+                       "2017 (Session 2)": "",
+                       "2018 (Session 1)": "",
+                       "2018 (Session 2)": "",
+                       "2019 (Session 1)": "",
+                       "2019 (Session 2)": "",
+                       "2021 (Session 1)": "",
+                       "2021 (Session 2)": "",
+                       "2024 (Session 1)": ""
+                        },
+                        french: {
+                       "2011 (Session 1)": "",
+                       "2011 (Session 2)": "",
+                       "2012 (Session 1)": "",
+                       "2012 (Session 2)": "",
+                       "2013 (Session 1)": "",
+                       "2013 (Session 2)": "",
+                       "2015 (Session 1)": "",
+                       "2016 (Session 1)": "",
+                       "2016 (Session 2)": "",
+                       "2017 (Session 2)": "",
+                       "2018 (Session 1)": "",
+                       "2018 (Session 2)": "",
+                       "2019 (Session 1)": "",
+                       "2019 (Session 2)": "",
+                       "2021 (Session 1)": "",
+                       "2021 (Session 2)": "",
+                       "2024 (Session 1)": ""
+                        }
+                    }
+                },
+                ls: {
+                    "Biology": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": "",
+                            "2024 (Session 2)": ""
+                        }
+                    },
+                    "Chemistry": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": "",
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": "",
+                            "2023 (Session 1)": ""
+                        }
+                    },
+                    "Physics": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2022 (Session 1)": "",
+                            "2022 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Mathematics": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "History": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Civics": {
+                        english: {
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2018 (Session 1)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2018 (Session 1)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "English": {
+                        english: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "French": {
+                        french: {
+                            "2011 (Session 1)": "",
+                            "2011 (Session 2)": "",
+                            "2012 (Session 1)": "",
+                            "2012 (Session 2)": "",
+                            "2013 (Session 1)": "",
+                            "2013 (Session 2)": "",
+                            "2015 (Session 1)": "",
+                            "2015 (Session 2)": "",
+                            "2016 (Session 1)": "",
+                            "2016 (Session 2)": "",
+                            "2017 (Session 1)": "",
+                            "2017 (Session 2)": "",
+                            "2018 (Session 1)": "",
+                            "2018 (Session 2)": "",
+                            "2019 (Session 1)": "",
+                            "2019 (Session 2)": "",
+                            "2021 (Session 1)": "",
+                            "2021 (Session 2)": "",
+                            "2023 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Arabic": {
+                        arabic: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    }
+                },
+                lh: {
+                    "Philosophy": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2025 (Session 2)": "",
+                            "2024 (Session 1)": "",
+                            "2024 (Session 2)": ""
+                        }
+                    },
+                    "Arabic Philosophy": {
+                        arabic: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": "",
+                            "2023 (Session 1)": ""
+                        }
+                    },
+                    "English Literature": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "French Literature": {
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Arabic Literature": {
+                        arabic: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "History": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Geography": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Mathematics": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Psychology": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    },
+                    "Sociology": {
+                        english: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        },
+                        french: {
+                            "2025 (Session 1)": "",
+                            "2024 (Session 1)": ""
+                        }
+                    }
+                }
+            }
+        };
+
+        const courses = [
+            {
+                id: 'grade9',
+                gradient: 'from-purple-500 to-purple-700'
+            },
+            {
+                id: 'se',
+                gradient: 'from-pink-500 to-red-500'
+            },
+            {
+                id: 'gs',
+                gradient: 'from-cyan-500 to-blue-500'
+            },
+            {
+                id: 'ls',
+                gradient: 'from-green-500 to-emerald-500'
+            },
+            {
+                id: 'lh',
+                gradient: 'from-amber-500 to-orange-500'
+            }
+        ];
+
+        function getTranslation(key) {
+            const keys = key.split('.');
+            let value = config.translations[selectedLanguage];
+            
+            for (const k of keys) {
+                if (value && typeof value === 'object' && k in value) {
+                    value = value[k];
+                } else {
+                    return key; // Return key if translation not found
+                }
+            }
+            
+            return value || key;
+        }
+
+        function updatePageContent() {
+            // Update all elements with data-translate attributes
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = getTranslation(key);
+            });
+
+            // Update placeholder texts
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                element.placeholder = getTranslation(key);
+            });
+
+            // Update language toggle button
+            const languageToggle = document.getElementById('languageToggle');
+            if (languageToggle) {
+                languageToggle.textContent = `🌐 ${selectedLanguage === 'english' ? 'EN/FR' : 'FR/EN'}`;
+            }
+
+            // Re-render courses with new language
+            renderCourses();
+        }
+
+        function toggleLanguage() {
+            selectedLanguage = selectedLanguage === 'english' ? 'french' : 'english';
+            sessionStorage.setItem('lebanonEduLanguage', selectedLanguage);
+            updatePageContent();
+            
+            const languageName = selectedLanguage === 'english' ? 'English' : 'Français';
+            showNotification('Language Changed', `Interface updated to ${languageName}`, 'success');
+        }
+
+        // Utility functions
+        function formatTime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function showNotification(title, message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const icon = document.getElementById('notificationIcon');
+            const titleEl = document.getElementById('notificationTitle');
+            const messageEl = document.getElementById('notificationMessage');
+            
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+            
+            // Set icon and border color based on type
+            if (type === 'success') {
+                icon.textContent = '✅';
+                notification.className = notification.className.replace(/border-\w+-500/, 'border-green-500');
+            } else if (type === 'error') {
+                icon.textContent = '❌';
+                notification.className = notification.className.replace(/border-\w+-500/, 'border-red-500');
+            } else {
+                icon.textContent = 'ℹ️';
+                notification.className = notification.className.replace(/border-\w+-500/, 'border-blue-500');
+            }
+            
+            notification.classList.remove('hidden');
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 5000);
+        }
+
+        function canAccessCourse(courseId) {
+            return currentUser?.licenseInfo?.courses?.includes(courseId);
+        }
+
+        function getEmbedUrl(url) {
+            const fileId = url.match(/[-\w]{25,}/);
+            if (fileId) {
+                return ``;
+            }
+            return null;
+        }
+
+        function getChatbotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            const userName = currentUser?.name?.split(' ')[0] || 'Student';
+
+            if (selectedLanguage === 'french') {
+                if (lowerMessage.match(/bonjour|salut|hello|hi|مرحبا/)) {
+                    return `Bonjour ${userName}! Comment puis-je vous aider avec vos études aujourd'hui?`;
+                }
+
+                if (lowerMessage.match(/math|mathématiques|رياضيات/)) {
+                    return "Je peux vous aider en mathématiques! Sur quel sujet spécifique avez-vous besoin d'aide? Algèbre, géométrie, calcul ou statistiques?";
+                }
+
+                if (lowerMessage.match(/science|physique|chimie|biologie|علوم|فيزياء|كيمياء|أحياء/)) {
+                    return "Les sciences sont passionnantes! Vous intéressez-vous à la physique, la chimie ou la biologie?";
+                }
+
+                if (lowerMessage.match(/examen|test|quiz|امتحان|اختبار/)) {
+                    return "La préparation aux examens est cruciale! Je peux vous aider à créer un plan d'étude et réviser les concepts clés.";
+                }
+
+                return `C'est une question intéressante sur "${message}". Laissez-moi vous aider à mieux comprendre ceci. Dans le programme libanais, ce sujet est généralement couvert en détail. Voulez-vous que j'explique les concepts fondamentaux, que je fournisse des exemples, ou que je vous aide avec des problèmes spécifiques?`;
+            } else {
+                if (lowerMessage.match(/hello|hi|hey|مرحبا|bonjour/)) {
+                    return `Hello ${userName}! How can I help you with your studies today?`;
+                }
+
+                if (lowerMessage.match(/math|رياضيات|mathématiques/)) {
+                    return "I can help with mathematics! What specific topic do you need help with? Algebra, geometry, calculus, or statistics?";
+                }
+
+                if (lowerMessage.match(/science|physics|chemistry|biology|علوم|فيزياء|كيمياء|أحياء/)) {
+                    return "Science is amazing! Are you interested in physics, chemistry, or biology?";
+                }
+
+                if (lowerMessage.match(/exam|test|quiz|امتحان|اختبار/)) {
+                    return "Exam preparation is crucial! I can help you create a study plan and review key concepts.";
+                }
+
+                return `That's an interesting question about "${message}". Let me help you understand this better. In the Lebanese curriculum, this topic is typically covered in detail. Would you like me to explain the fundamental concepts, provide examples, or help you with specific problems?`;
+            }
+        }
+
+        // Get available languages for a subject
+        function getAvailableLanguages(branchId, subjectName) {
+            const content = config.courseContent[branchId]?.[subjectName];
+            if (!content) return [];
+            
+            return Object.keys(content);
+        }
+
+        // Get content URL based on language preference
+        function getContentUrl(branchId, subjectName, sessionName, preferredLanguage) {
+            const content = config.courseContent[branchId]?.[subjectName];
+            if (!content) return null;
+            
+            // Try preferred language first
+            if (content[preferredLanguage]?.[sessionName]) {
+                return content[preferredLanguage][sessionName];
+            }
+            
+            // Try other available languages
+            const availableLanguages = Object.keys(content);
+            for (const lang of availableLanguages) {
+                if (content[lang]?.[sessionName]) {
+                    return content[lang][sessionName];
+                }
+            }
+            
+            return null;
+        }
+
+        // Get subject teaching language
+        function getSubjectLanguage(branchId, subjectName) {
+            const subject = config.subjectData[branchId]?.subjects?.find(s => 
+                s.name.english === subjectName || s.name.french === subjectName
+            );
+            return subject?.language || 'both';
+        }
+
+        // Authentication functions
+        async function handleLogin() {
+            const licenseInput = document.getElementById('licenseInput');
+            const authError = document.getElementById('authError');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            const keyToValidate = licenseInput.value.trim().toUpperCase();
+            
+            if (!keyToValidate) {
+                authError.textContent = 'Please enter your license key.';
+                authError.classList.remove('hidden');
+                return;
+            }
+
+            loginBtn.innerHTML = `
+                <span class="flex items-center justify-center">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Validating License...
+                </span>
+            `;
+            loginBtn.disabled = true;
+            authError.classList.add('hidden');
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            const licenseInfo = config.validLicenseKeys[keyToValidate];
+            
+            if (!licenseInfo) {
+                authError.textContent = 'Invalid license key. Please check and try again.';
+                authError.classList.remove('hidden');
+                loginBtn.innerHTML = 'Access Platform';
+                loginBtn.disabled = false;
+                return;
+            }
+
+            const user = {
+                id: keyToValidate,
+                name: licenseInfo.userName,
+                email: `user@${keyToValidate.toLowerCase()}.edu`,
+                licenseKey: keyToValidate,
+                licenseInfo: licenseInfo,
+                createdAt: new Date().toISOString(),
+                progress: {}
+            };
+
+            currentUser = user;
+            isAuthenticated = true;
+            sessionStorage.setItem('lebanonEduLicense', keyToValidate);
+            
+            // Update UI
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('languageSelectionScreen').classList.remove('hidden');
+            
+            showNotification(`Welcome, ${user.name}!`, 'Please select your preferred language.', 'success');
+        }
+
+        function handleLanguageSelection(language) {
+            selectedLanguage = language;
+            sessionStorage.setItem('lebanonEduLanguage', language);
+            
+            // Hide language selection and show main app
+            document.getElementById('languageSelectionScreen').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            
+            // Initialize main app with selected language
+            initializeMainApp();
+            updatePageContent();
+            
+            const languageName = language === 'english' ? 'English' : 'Français';
+            showNotification('Language Selected', `Interface set to ${languageName}`, 'success');
+        }
+
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                isAuthenticated = false;
+                currentUser = null;
+                sessionStorage.removeItem('lebanonEduLicense');
+                
+                // Reset UI
+                document.getElementById('mainApp').classList.add('hidden');
+                document.getElementById('languageSelectionScreen').classList.add('hidden');
+                document.getElementById('authScreen').classList.remove('hidden');
+                document.getElementById('profilePanel').classList.add('hidden');
+                document.getElementById('licenseInput').value = '';
+                selectedLanguage = 'english'; // Reset to default
+                sessionStorage.removeItem('lebanonEduLanguage');
+                
+                showNotification('Logged Out', 'Your progress has been saved.', 'info');
+            }
+        }
+
+        // Main app initialization
+        function initializeMainApp() {
+            updateUserProfile();
+            renderCourses();
+            updateTimer();
+        }
+
+        function updateUserProfile() {
+            if (!currentUser) return;
+            
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            document.getElementById('userLicense').textContent = currentUser.licenseKey;
+            document.getElementById('userAccess').textContent = currentUser.licenseInfo.name;
+            document.getElementById('profileBtn').textContent = currentUser.name.charAt(0);
+        }
+
+        function renderCourses() {
+            const coursesGrid = document.getElementById('coursesGrid');
+            coursesGrid.innerHTML = '';
+
+            courses.forEach(course => {
+                const hasAccess = canAccessCourse(course.id);
+                const courseData = getTranslation(`courses.${course.id}`);
+                
+                const courseDiv = document.createElement('div');
+                courseDiv.className = `relative rounded-2xl p-6 text-white cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                    hasAccess ? '' : 'opacity-60 grayscale'
+                }`;
+                courseDiv.onclick = () => handleCourseClick(course.id);
+
+                courseDiv.innerHTML = `
+                    <div class="absolute inset-0 bg-gradient-to-br ${course.gradient} rounded-2xl"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-3">${courseData.title}</h3>
+                        <p class="mb-6 opacity-90">${courseData.description}</p>
+                        <button class="bg-white/20 backdrop-blur-sm border-2 border-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition-all">
+                            ${hasAccess ? (selectedLanguage === 'french' ? 'Explorer les Matières' : 'Explore Subjects') : (selectedLanguage === 'french' ? 'Mettre à Niveau la Licence' : 'Upgrade License')}
+                        </button>
+                        ${!hasAccess ? '<div class="absolute top-4 right-4">🔒</div>' : ''}
+                    </div>
+                `;
+
+                coursesGrid.appendChild(courseDiv);
+            });
+        }
+
+        function handleCourseClick(courseId) {
+            if (!canAccessCourse(courseId)) {
+                showNotification('License Required', 'This course is not included in your current license.', 'error');
+                return;
+            }
+            
+            selectedBranch = courseId;
+            showSubjectModal();
+        }
+
+        // Modal functions
+        function showSubjectModal() {
+            const modal = document.getElementById('subjectModal');
+            const title = document.getElementById('subjectModalTitle');
+            const grid = document.getElementById('subjectsGrid');
+            
+            const branchData = config.subjectData[selectedBranch];
+            if (!branchData) {
+                showNotification('Error', 'Course data not found. Please try again.', 'error');
+                return;
+            }
+            
+            title.textContent = branchData.title[selectedLanguage];
+            
+            grid.innerHTML = '';
+            branchData.subjects.forEach(subject => {
+                const subjectDiv = document.createElement('div');
+                subjectDiv.className = 'p-4 rounded-xl text-white text-center cursor-pointer transform transition-all duration-200 hover:-translate-y-1 hover:shadow-lg relative';
+                subjectDiv.style.background = `linear-gradient(135deg, ${subject.color} 0%, ${subject.color}dd 100%)`;
+                subjectDiv.onclick = () => handleSubjectClick(subject);
+                
+                // Add language indicator
+                let languageIndicator = '';
+                if (subject.language === 'english') {
+                    languageIndicator = '<div class="absolute top-2 right-2 text-xs bg-blue-500 text-white px-2 py-1 rounded">EN</div>';
+                } else if (subject.language === 'french') {
+                    languageIndicator = '<div class="absolute top-2 right-2 text-xs bg-red-500 text-white px-2 py-1 rounded">FR</div>';
+                } else if (subject.language === 'arabic') {
+                    languageIndicator = '<div class="absolute top-2 right-2 text-xs bg-green-500 text-white px-2 py-1 rounded">AR</div>';
+                } else {
+                    languageIndicator = '<div class="absolute top-2 right-2 text-xs bg-purple-500 text-white px-2 py-1 rounded">EN/FR</div>';
+                }
+                
+                subjectDiv.innerHTML = `
+                    ${languageIndicator}
+                    <div class="text-3xl mb-2">${subject.icon}</div>
+                    <div class="font-semibold">${subject.name[selectedLanguage]}</div>
+                `;
+                
+                grid.appendChild(subjectDiv);
+            });
+            
+            modal.classList.remove('hidden');
+        }
+
+        function handleSubjectClick(subject) {
+            selectedSubject = subject;
+            document.getElementById('subjectModal').classList.add('hidden');
+            showSessionModal();
+        }
+
+        function showSessionModal() {
+            const modal = document.getElementById('sessionModal');
+            const title = document.getElementById('sessionModalTitle');
+            const grid = document.getElementById('sessionsGrid');
+            
+            title.textContent = `${selectedSubject.name[selectedLanguage]} - ${config.subjectData[selectedBranch].title[selectedLanguage]}`;
+            
+            grid.innerHTML = '';
+            
+            // Generate sessions for the past 15 years
+            for (let i = 0; i < 15; i++) {
+                const year = 2025 - i;
+                ['Session 1', 'Session 2'].forEach(session => {
+                    const sessionName = `${year} (${session})`;
+                    const subjectKey = selectedSubject.name.english; // Use English name as key
+                    
+                    // Check if content exists in any language
+                    const availableLanguages = getAvailableLanguages(selectedBranch, subjectKey);
+                    let hasContent = false;
+                    let languageInfo = '';
+                    
+                    for (const lang of availableLanguages) {
+                        const content = config.courseContent[selectedBranch]?.[subjectKey]?.[lang]?.[sessionName];
+                        if (content) {
+                            hasContent = true;
+                            if (lang === 'english') languageInfo += ' 🇬🇧';
+                            if (lang === 'french') languageInfo += ' 🇫🇷';
+                            if (lang === 'arabic') languageInfo += ' 🇱🇧';
+                        }
+                    }
+                    
+                    const sessionDiv = document.createElement('div');
+                    sessionDiv.className = `p-3 rounded-lg text-center cursor-pointer transition-all relative ${
+                        hasContent 
+                            ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg hover:-translate-y-0.5' 
+                            : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white opacity-60 cursor-not-allowed'
+                    }`;
+                    
+                    if (hasContent) {
+                        sessionDiv.onclick = () => handleSessionClick(sessionName);
+                    }
+                    
+                    sessionDiv.innerHTML = `
+                        <span>${sessionName}</span>
+                        ${hasContent ? `<div class="text-xs mt-1">${languageInfo}</div>` : '<div class="text-xs mt-1">Coming Soon</div>'}
+                    `;
+                    
+                    grid.appendChild(sessionDiv);
+                });
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        function handleSessionClick(sessionName) {
+            selectedSession = sessionName;
+            
+            const subjectKey = selectedSubject.name.english; // Use English name as key
+            
+            // Determine which language to use based on user preference and availability
+            let languageToUse = selectedLanguage === 'english' ? 'english' : 'french';
+            
+            // For language-specific subjects, use their native language
+            if (selectedSubject.language === 'english') languageToUse = 'english';
+            else if (selectedSubject.language === 'french') languageToUse = 'french';
+            else if (selectedSubject.language === 'arabic') languageToUse = 'arabic';
+            
+            const contentUrl = getContentUrl(selectedBranch, subjectKey, sessionName, languageToUse);
+            
+            if (contentUrl) {
+                showContentModal(contentUrl, sessionName, languageToUse);
+            } else {
+                const notAvailableMsg = selectedLanguage === 'french' 
+                    ? `Le contenu pour ${selectedSubject.name[selectedLanguage]} - ${sessionName} est absent de cette démo publique.`
+                    : `Content for ${selectedSubject.name[selectedLanguage]} - ${sessionName} is unavailable in this public demo.`;
+                showNotification(selectedLanguage === 'french' ? 'Démo' : 'Demo', notAvailableMsg, 'info');
+            }
+        }
+
+        function showContentModal(url, session, contentLanguage) {
+            const modal = document.getElementById('contentModal');
+            const title = document.getElementById('contentModalTitle');
+            const header = document.getElementById('contentHeader');
+            const sessionEl = document.getElementById('contentSession');
+            const driveLink = document.getElementById('openInDrive');
+            const frame = document.getElementById('contentFrame');
+            const placeholder = document.getElementById('previewPlaceholder');
+            
+            // Add language indicator to title
+            let langFlag = '';
+            if (contentLanguage === 'english') langFlag = ' 🇬🇧';
+            else if (contentLanguage === 'french') langFlag = ' 🇫🇷';
+            else if (contentLanguage === 'arabic') langFlag = ' 🇱🇧';
+            
+            title.textContent = `${selectedSubject.name[selectedLanguage]} - ${session}${langFlag}`;
+            header.textContent = `📚 ${config.subjectData[selectedBranch].title[selectedLanguage]} - ${selectedSubject.name[selectedLanguage]}`;
+            sessionEl.textContent = selectedLanguage === 'french' ? `Session: ${session}` : `Session: ${session}`;
+            driveLink.href = url;
+            
+            // Reset iframe
+            frame.src = '';
+            frame.classList.add('hidden');
+            placeholder.classList.remove('hidden');
+            
+            // Show language notification if content is in different language than interface
+            if ((selectedLanguage === 'english' && contentLanguage === 'french') || 
+                (selectedLanguage === 'french' && contentLanguage === 'english')) {
+                const langMsg = contentLanguage === 'english' ? 
+                    'Content is available in English' : 
+                    'Contenu disponible en français';
+                showNotification('Language Note', langMsg, 'info');
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Timer functions
+        function updateTimer() {
+            document.getElementById('timerDisplay').textContent = formatTime(timerSeconds);
+            document.getElementById('studyTime').textContent = formatTime(timerSeconds);
+        }
+
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    updateTimer();
+                }, 1000);
+                
+                const startMsg = selectedLanguage === 'french' 
+                    ? 'Session d\'étude commencée!'
+                    : 'Study session started!';
+                showNotification('Timer Started', startMsg, 'success');
+            }
+        }
+
+        function pauseTimer() {
+            isTimerRunning = false;
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            
+            const pauseMsg = selectedLanguage === 'french' 
+                ? 'Session d\'étude en pause'
+                : 'Study session paused';
+            showNotification('Timer Paused', pauseMsg, 'info');
+        }
+
+        function stopTimer() {
+            pauseTimer();
+            const finalTime = formatTime(timerSeconds);
+            timerSeconds = 0;
+            updateTimer();
+            document.getElementById('studyTimer').classList.add('hidden');
+            
+            const stopMsg = selectedLanguage === 'french' 
+                ? `Session terminée! Temps d'étude: ${finalTime}`
+                : `Session completed! Study time: ${finalTime}`;
+            showNotification('Great Work!', stopMsg, 'success');
+        }
+
+        // Chat functions
+        function addChatMessage(message, isBot = false) {
+            const chatContainer = document.getElementById('chatMessages').firstElementChild;
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `max-w-[85%] p-3 rounded-2xl ${
+                isBot
+                    ? 'bg-white text-gray-800 self-start'
+                    : 'bg-gradient-to-r from-purple-600 to-purple-700 text-white self-end ml-auto'
+            }`;
+            messageDiv.innerHTML = `<p class="whitespace-pre-wrap">${message}</p>`;
+            chatContainer.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+
+        function handleChatSubmit() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addChatMessage(message, false);
+            input.value = '';
+            
+            // Show typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'bg-white p-3 rounded-2xl self-start max-w-[85%]';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="flex space-x-2">
+                    <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce animation-delay-100"></div>
+                    <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce animation-delay-200"></div>
+                </div>
+            `;
+            document.getElementById('chatMessages').firstElementChild.appendChild(typingDiv);
+            
+            // Simulate bot response
+            setTimeout(() => {
+                document.getElementById('typing-indicator')?.remove();
+                const response = getChatbotResponse(message);
+                addChatMessage(response, true);
+            }, 1000 + Math.random() * 1000);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for existing session
+            const savedLicense = sessionStorage.getItem('lebanonEduLicense');
+            const savedLanguage = sessionStorage.getItem('lebanonEduLanguage');
+            
+            if (savedLanguage) {
+                selectedLanguage = savedLanguage;
+            }
+            
+            if (savedLicense && config.validLicenseKeys[savedLicense]) {
+                currentUser = {
+                    id: savedLicense,
+                    name: config.validLicenseKeys[savedLicense].userName,
+                    email: `user@${savedLicense.toLowerCase()}.edu`,
+                    licenseKey: savedLicense,
+                    licenseInfo: config.validLicenseKeys[savedLicense],
+                    createdAt: new Date().toISOString(),
+                    progress: {}
+                };
+                isAuthenticated = true;
+                
+                document.getElementById('authScreen').classList.add('hidden');
+                document.getElementById('languageSelectionScreen').classList.add('hidden');
+                document.getElementById('mainApp').classList.remove('hidden');
+                
+                initializeMainApp();
+                updatePageContent();
+                return;
+            }
+
+            // Language selection buttons
+            document.getElementById('selectEnglish').addEventListener('click', function() {
+                handleLanguageSelection('english');
+            });
+            document.getElementById('selectFrench').addEventListener('click', function() {
+                handleLanguageSelection('french');
+            });
+
+            // Language toggle button
+            document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+
+            // Authentication
+            document.getElementById('loginBtn').addEventListener('click', handleLogin);
+            document.getElementById('licenseInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') handleLogin();
+            });
+
+            // Profile
+            document.getElementById('profileBtn').addEventListener('click', function() {
+                const panel = document.getElementById('profilePanel');
+                panel.classList.toggle('hidden');
+            });
+            document.getElementById('closeProfileBtn').addEventListener('click', function() {
+                document.getElementById('profilePanel').classList.add('hidden');
+            });
+            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+
+            // Mobile menu
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.toggle('hidden');
+            });
+
+            // Modal close buttons
+            document.getElementById('closeSubjectModal').addEventListener('click', function() {
+                document.getElementById('subjectModal').classList.add('hidden');
+            });
+            document.getElementById('closeSessionModal').addEventListener('click', function() {
+                document.getElementById('sessionModal').classList.add('hidden');
+            });
+            document.getElementById('closeContentModal').addEventListener('click', function() {
+                document.getElementById('contentModal').classList.add('hidden');
+            });
+
+            // Back to subjects button
+            document.getElementById('backToSubjects').addEventListener('click', function() {
+                document.getElementById('sessionModal').classList.add('hidden');
+                showSubjectModal();
+            });
+
+            // Preview button
+            document.getElementById('previewBtn').addEventListener('click', function() {
+                const driveUrl = document.getElementById('openInDrive').href;
+                const embedUrl = getEmbedUrl(driveUrl);
+                const frame = document.getElementById('contentFrame');
+                const placeholder = document.getElementById('previewPlaceholder');
+                
+                if (embedUrl) {
+                    frame.src = embedUrl;
+                    frame.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                    
+                    const successMsg = selectedLanguage === 'french' 
+                        ? 'Vous pouvez maintenant voir le document ci-dessous.'
+                        : 'You can now view the document below.';
+                    showNotification('Content Loaded', successMsg, 'success');
+                } else {
+                    const errorMsg = selectedLanguage === 'french' 
+                        ? 'Impossible de prévisualiser ce document. Veuillez utiliser "Ouvrir dans Google Drive".'
+                        : 'Unable to preview this document. Please use "Open in Google Drive".';
+                    showNotification('Preview Error', errorMsg, 'error');
+                }
+            });
+
+            // Timer controls
+            document.getElementById('timerToggleBtn').addEventListener('click', function() {
+                const timer = document.getElementById('studyTimer');
+                timer.classList.toggle('hidden');
+            });
+            document.getElementById('startTimerBtn').addEventListener('click', startTimer);
+            document.getElementById('pauseTimerBtn').addEventListener('click', pauseTimer);
+            document.getElementById('stopTimerBtn').addEventListener('click', stopTimer);
+
+            // Chat
+            document.getElementById('chatToggleBtn').addEventListener('click', function() {
+                const chatbot = document.getElementById('chatbot');
+                chatbot.classList.toggle('hidden');
+                
+                // Update welcome message based on current language
+                const welcomeMsg = document.getElementById('welcomeMessage');
+                if (welcomeMsg) {
+                    welcomeMsg.textContent = getTranslation('chat.welcomeMessage');
+                }
+            });
+            document.getElementById('sendChatBtn').addEventListener('click', handleChatSubmit);
+            document.getElementById('chatInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') handleChatSubmit();
+            });
+
+            // Close modals when clicking outside
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('fixed') && e.target.classList.contains('inset-0')) {
+                    // Close any open modals
+                    document.getElementById('subjectModal').classList.add('hidden');
+                    document.getElementById('sessionModal').classList.add('hidden');
+                    document.getElementById('contentModal').classList.add('hidden');
+                }
+                
+                // Close profile panel when clicking outside
+                if (!e.target.closest('#profilePanel') && !e.target.closest('#profileBtn')) {
+                    document.getElementById('profilePanel').classList.add('hidden');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu after navigation
+                        document.getElementById('mobileMenu').classList.add('hidden');
+                    }
+                });
+            });
+
+            // Initialize language display
+            updatePageContent();
+        });
+
+        // Add some sample interaction for demo purposes
+        window.addEventListener('load', function() {
+            // Show welcome notification after everything loads
+            setTimeout(() => {
+                if (!isAuthenticated) {
+                    showNotification(
+                        'Welcome to LebanonEdu!', 
+                        'Use "PORTFOLIO-DEMO" to try our platform with limited access.',
+                        'info'
+                    );
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
